@@ -1,15 +1,9 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
 
-// Debug
 const gui = new dat.GUI()
-
-// Canvas
 const canvas = document.querySelector('canvas.webgl')
-
-// Scene
 const scene = new THREE.Scene()
 
 //Rectángulos
@@ -30,7 +24,7 @@ scene.add(cube2);
 
 //Círculo
 
-const geometry3 = new THREE.SphereGeometry(2, 32, 16);
+const geometry3 = new THREE.SphereGeometry(1.5, 32, 16);
 const material3 = new THREE.MeshBasicMaterial({ color: 0xff0000 });
 const sphere = new THREE.Mesh(geometry3, material3);
 sphere.position.set(0, 4, 0)
@@ -42,6 +36,13 @@ pointLight.position.y = 3
 pointLight.position.z = 4
 scene.add(pointLight)
 
+document.addEventListener('keydown', function (e) {
+    if (e.key === "ArrowLeft") {
+        cube2.position.x -= 1
+    } if (e.key === "ArrowRight") {
+        cube2.position.x += 1
+    }
+})
 
 /**
  * Sizes
